@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 753dc65dc87acd34faf3b97c4e4ab386
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone.004
+    100004: Bone.004_end
+    100006: Bone.007
+    100008: Bone.007_end
+    100010: //RootNode
+    100012: Circle
+    100014: Circle.003
+    100016: Head
+    100018: Head_end
+    100020: Left
+    100022: LL
+    100024: Main
+    100026: Plane
+    100028: Rigth
+    100030: RR
+    400000: Armature
+    400002: Bone.004
+    400004: Bone.004_end
+    400006: Bone.007
+    400008: Bone.007_end
+    400010: //RootNode
+    400012: Circle
+    400014: Circle.003
+    400016: Head
+    400018: Head_end
+    400020: Left
+    400022: LL
+    400024: Main
+    400026: Plane
+    400028: Rigth
+    400030: RR
+    2100000: Lamp
+    2100002: Glass_lamp
+    2100004: Body
+    2100006: Face_shadow
+    2100008: Property
+    2100010: Laether
+    2100012: Eyes
+    4300000: Circle.003
+    4300002: Circle
+    4300004: Plane
+    9500000: //RootNode
+    13700000: Circle
+    13700002: Circle.003
+    13700004: Plane
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.14
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0014
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: Character(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Character(Clone)
+      position: {x: 0.0037343644, y: 0.14606526, z: -0.006409294}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Main
+      parentName: Armature
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Main
+      position: {x: -0, y: 0.0014, z: 0}
+      rotation: {x: 0.14540252, y: 0, z: -0, w: 0.9893726}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_end
+      parentName: Head
+      position: {x: -0, y: 0.0014479089, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rigth
+      parentName: Main
+      position: {x: -0, y: 0.0014, z: 0}
+      rotation: {x: 0.3259457, y: 0.6609034, z: 0.5519397, w: -0.39029315}
+      scale: {x: 1, y: 1.0000004, z: 1.0000001}
+    - name: RR
+      parentName: Rigth
+      position: {x: 1.5090944e-11, y: 0.0010695303, z: 1.5646219e-11}
+      rotation: {x: -0.15730058, y: 0.00069926213, z: -0.4831987, w: 0.8612637}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Bone.004
+      parentName: RR
+      position: {x: 3.6507835e-11, y: 0.001052717, z: 2.125278e-10}
+      rotation: {x: 0.014232704, y: 0.03705328, z: -0.2191463, w: 0.97488433}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
+    - name: Bone.004_end
+      parentName: Bone.004
+      position: {x: -0, y: 0.0015358023, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left
+      parentName: Main
+      position: {x: -0, y: 0.0014, z: 0}
+      rotation: {x: -0.3146859, y: 0.5884279, z: 0.5463587, w: 0.5061794}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: LL
+      parentName: Left
+      position: {x: -0, y: 0.0010832935, z: -7.301569e-11}
+      rotation: {x: -0.661207, y: 0.111354426, z: -0.13046548, w: 0.7303316}
+      scale: {x: 1, y: 0.9999999, z: 0.9999998}
+    - name: Bone.007
+      parentName: LL
+      position: {x: -1.04308125e-11, y: 0.00082585274, z: 1.5219315e-11}
+      rotation: {x: -0.036814306, y: -0.0033631278, z: 0.029038046, w: 0.9988945}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Bone.007_end
+      parentName: Bone.007
+      position: {x: -0, y: 0.00089891226, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Circle.003
+      parentName: Character(Clone)
+      position: {x: 0.040895227, y: 0.13052812, z: 0.2897798}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 19.86673, y: 19.86673, z: 19.86673}
+    - name: Circle
+      parentName: Character(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Plane
+      parentName: Character(Clone)
+      position: {x: 0.014412457, y: 0.4254655, z: 0.08917703}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: 2.6607869, y: 2.6607869, z: 2.6607869}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

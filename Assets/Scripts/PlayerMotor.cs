@@ -1,33 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMotor : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    private Vector3 moveDirection = Vector3.zero;
 
-    private CharacterController _char;
-
-    private float _MovX;
-    private float _MovY;
+    private Rigidbody rb;
 
     void Start()
     {
-        _char = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    public void Move(Vector3 _moveDirection)
     {
-        _MovX = Input.GetAxis("Horizontal");
-        _MovY = Input.GetAxis("Vertical");
-
-        Vector3 movHorizontal = transform.right * _MovX;
-        Vector3 movVertical = transform.forward * _MovY;
-
-        Vector3 moveVector = (movHorizontal + movVertical).normalized * moveSpeed * Time.deltaTime;
-
-        _char.Move(moveVector);
+        moveDirection = _moveDirection;
     }
 
+    private void FixedUpdate()
+    {
+        PerformMovement();
+    }
+
+    private void PerformMovement()
+    {
+        if (moveDirection != Vector3.zero)
+        {
+            rb.MovePosition(rb.position + moveDirection * Time.fixedDeltaTime);
+        }
+    }
 }

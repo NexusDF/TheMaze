@@ -7,6 +7,8 @@ public class MazeCreator : MonoBehaviour
 
     public ColorToPrefab[] colorMappings;
 
+    public Vector3 rotation = Vector3.zero;
+
     void Start()
     {
         GeneratorMaze();
@@ -36,8 +38,8 @@ public class MazeCreator : MonoBehaviour
         {
             if (colorMapping.color.Equals(pixelColor))
             {
-                Vector3 position = new Vector3(x + 0.5f, 0, y + 0.5f);
-                Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
+                Vector3 position = new Vector3(x, 0, y);
+                Instantiate(colorMapping.prefab, position, Quaternion.Euler(rotation), transform);
             }
         }
 

@@ -7,7 +7,7 @@ public class Cube : MonoBehaviour
     BoxCollider col;
     public Manager manager;
     public int number;
-    public int NumberCell;
+    public int numberCell;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class Cube : MonoBehaviour
         if(!manager.isWin)
         {
             col.enabled = false;
-            RaycasHit hit;
+            RaycastHit hit;
             if (!Physics.Linecast(transform.position, transform.position + transform.right, out hit))
             {
                 transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
@@ -40,11 +40,12 @@ public class Cube : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "trigger")
         {
-            NumberCell = other.transform.GetComponent<NumberCell>().NumberCell;
+            numberCell = other.transform.GetComponent<NumberCell>().numberCell;
+            manager.win();
         }
     }
 }

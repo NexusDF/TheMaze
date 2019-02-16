@@ -4,66 +4,56 @@ using UnityEngine;
 
 public class BarleyBreak : MonoBehaviour
 {
-    public LayerMask mask;
+    private int[] currentIndex = new int[16];
+    private GameObject[] trigger;
+    private GameObject[] cell;
 
-    public Transform[] points;
+    public int NumberCell;
+    public LayerMask noTrigger;
 
-    public float distanceRay = 15;
-    public float distanceMove = 40;
-
-
-    private bool left = false;
-    private bool right = false;
-    private bool up = false;
-    private bool down = false;
-
-
-
-    public void MouseDown()
+    private void Start()
     {
-            if (!CheckCollision(points[0].position, transform.right, distanceRay, mask))
+
+    }
+
+    public void TakeIndex(GameObject[] obj)
+    {
+        cell = obj;
+    }
+
+    private void OnMouseDown()
+    {
+        if (!Physics.Linecast(transform.position,transform.position + transform.right, noTrigger))
+        {
+            transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+        }
+        else if (!Physics.Linecast(transform.position, transform.position - transform.right, noTrigger))
+        {
+            transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+        }
+        else if (!Physics.Linecast(transform.position, transform.position + transform.up, noTrigger))
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+        }
+        else if (!Physics.Linecast(transform.position, transform.position - transform.up, noTrigger))
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+        }
+
+
+    }
+
+    /*private void OnTriggerEnter(Collider other)
+    {
+            currentIndex[NumberCell] = other.GetComponent<BarleyBreak>().NumberCell;
+            grid.ChecksWin(currentIndex);
+            for (int i = 0; i < currentIndex.Length; i++)
             {
-                right = true;
+                Debug.Log(currentIndex[i].ToString());
             }
-            else if (!CheckCollision(points[1].position, -transform.up, distanceRay, mask))
-            {
-                down = true;
-            }
-            else if (!CheckCollision(points[3].position, -transform.right, distanceRay, mask))
-            {
-                left = true;
-            }
-            else if (!CheckCollision(points[2].position, transform.up, distanceRay, mask))
-            {
-                up = true;
-            }
+            //Debug.Log("Trigger: " + NumberCell.ToString() + " Cell:" + currentIndex[15]);
         
-
-
-        if (right)
-        {
-            transform.position = new Vector2(transform.position.x + distanceMove, transform.position.y);
-            right = false;
-        }
-        else if (up)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y + distanceMove);
-            up = false;
-        }
-        else if (left)
-        {
-            transform.position = new Vector2(transform.position.x - distanceMove, transform.position.y);
-            left = false;
-        }
-        else if (down)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y - distanceMove);
-            down = false;
-        }
-    }
-
-    private bool CheckCollision(Vector2 racastOrigin, Vector2 direction, float distance, LayerMask layerMask)
-    {
-        return Physics2D.Raycast(racastOrigin, direction, distance, layerMask);
-    }
+        
+    }*/
 }
+

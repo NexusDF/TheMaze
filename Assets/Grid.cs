@@ -10,7 +10,6 @@ public class Grid : MonoBehaviour
     private int size;
 
     private Vector3 main;
-    private BarleyBreak bb = new BarleyBreak();
 
     [SerializeField]
     private GameObject cell;
@@ -19,8 +18,8 @@ public class Grid : MonoBehaviour
     private int[] index_c = new int[15];
     [SerializeField]
     private GameObject border;
-    private GameObject[] cellIndex;
-    private GameObject[] cellTrigerIndex;
+    public GameObject[] cellIndex;
+    public GameObject[] cellTrigerIndex;
 
     private void Awake()
     {
@@ -28,7 +27,6 @@ public class Grid : MonoBehaviour
         FillTriggers(cellTrigerIndex);
         CreateBorders();
         Randomize(cellIndex);
-        bb.TakeIndex(cellIndex);
         EditNumbe(cellIndex);
     }
 
@@ -139,26 +137,5 @@ public class Grid : MonoBehaviour
     }
 
 
-    /*public void ChecksWin(int[] _currentIndex)
-    {
-        for (int i = 0; i < size - 1; i++)
-        {
-            if (index_c != null)
-            {
-                int[] index = new int[size];
-                index[i] = cellTrigerIndex[i].GetComponent<BarleyBreak>().NumberCell;
-                    if (_currentIndex[i] != index[i])
-                    {
-                    Debug.Log("it is work!");
-                    return;
-                    }
-                    else
-                    {
-                    Debug.Log("You win!");
-                    }
-         
-
-            }
-        }
-    }*/
+    
 }

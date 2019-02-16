@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class BarleyBreak : MonoBehaviour
 {
-    private int[] currentIndex = new int[16];
-    private GameObject[] trigger;
-    private GameObject[] cell;
+    private int[] currentIndex;
+    private GameObject[] triggers;
+    private int[] cells;
+
+    private bool[] isTrue = new bool[16];
+
+    private Grid grid = new Grid();
 
     public int NumberCell;
     public LayerMask noTrigger;
 
     private void Start()
     {
-
-    }
-
-    public void TakeIndex(GameObject[] obj)
-    {
-        cell = obj;
+        //ChecksWin();
     }
 
     private void OnMouseDown()
@@ -40,20 +39,46 @@ public class BarleyBreak : MonoBehaviour
             transform.position = new Vector2(transform.position.x, transform.position.y - 1);
         }
 
-
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-            currentIndex[NumberCell] = other.GetComponent<BarleyBreak>().NumberCell;
-            grid.ChecksWin(currentIndex);
-            for (int i = 0; i < currentIndex.Length; i++)
+        int count = 0;
+        if (NumberCell == other.transform.GetComponent<BarleyBreak>().NumberCell)
+        {
+            //хз
+            Debug.Log("Ok..");
+        }
+        else
+        {
+
+        }
+        Debug.Log(count.ToString());
+        
+    }
+
+    public void ChecksWin()
+    {
+        int count = 0;
+        for (int i = 0; i < grid.cellTrigerIndex.Length; i++)
+        {
+            if (grid.cellTrigerIndex[i].GetComponent<BarleyBreak>().NumberCell != cells[i])
             {
-                Debug.Log(currentIndex[i].ToString());
+                count = 0;
+                return;
             }
-            //Debug.Log("Trigger: " + NumberCell.ToString() + " Cell:" + currentIndex[15]);
+            else
+            {
+                count++;
+                if (count >= 15)
+                {
+                    Debug.Log("Win");
+                }
+            }
+
+        }
         
-        
-    }*/
+    }
+
 }
 

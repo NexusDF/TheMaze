@@ -3,11 +3,20 @@
 public class Bricks : MonoBehaviour
 {
     public Bricks[] brick;
-    public int count = 4;
-    public bool flag;
-    public int x, y;
+    public int count;
+    private bool flag;
+    private int x, y;
     public Material _Blue;
     public Material _Red;
+
+    private void Start()
+    {
+        for (int i = 0; i < brick.Length; i++)
+        {
+            brick[i].x = i / count;
+            brick[i].y = i % count;
+        }
+    }
 
     private void OnMouseDown()
     {

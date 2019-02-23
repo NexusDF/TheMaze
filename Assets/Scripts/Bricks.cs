@@ -17,8 +17,19 @@ public class Bricks : MonoBehaviour
         WinPanel.SetActive(false);
         for (int i = 0; i < brick.Length; i++)
         {
+            int r = Random.Range(0, 2);
+            if (r == 1)
+            {
+                brick[i].flag = true;
+            }
+            else brick[i].flag = false;
             brick[i].x = i / count;
             brick[i].y = i % count;
+            if (brick[i].flag == true)
+            {
+                brick[i].GetComponent<MeshRenderer>().material = _Red;
+            }
+            else brick[i].GetComponent<MeshRenderer>().material = _Blue;
         }
     }
 

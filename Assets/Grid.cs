@@ -5,57 +5,71 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    public int colum;
-    public int row;
-    private int size;
 
-    private Vector3 main;
-
-    [SerializeField]
-    private GameObject cell;
-    [SerializeField]
-    private GameObject cellTrigger;
-    private int[] index_c = new int[15];
-    [SerializeField]
-    private GameObject border;
     public GameObject[] cellIndex;
-    public GameObject[] cellTrigerIndex;
+    public GameObject[] triggerIndex;
+
+    public  int column;
+    public  int row;
+
+    [SerializeField] private GameObject border;
+    [SerializeField] private GameObject cell;
+    [SerializeField] private GameObject cellTrigger;
+
+    private Index[] id;
+    
+
 
     private void Awake()
     {
-        GridCreator();
-        FillTriggers(cellTrigerIndex);
+        GridCreator(cell);
+        //FillTriggers(triggerIndex);
         CreateBorders();
-        Randomize(cellIndex);
-        EditNumbe(cellIndex);
     }
 
 
-    void GridCreator()
+    void Setup()
     {
-        size = colum * row;
+        id = new Index[row * column - 1];
 
-        cellIndex = new GameObject[size - 1];
-        cellTrigerIndex = new GameObject[size - 1];
-
-        for (int y = 0; y < size / row ; y++)
+        for (int i = 0; i < id.Length; i++)
         {
-            for (int x = 0; x < size / colum ; x++)
+            id[i] = new Index();
+        }
+
+        for (int i = 0; i < id.Length; i++)
+        {
+            //id[i] = ;
+        }
+    }
+
+    void GridCreator(GameObject cell)
+    {
+        int gridSize = column * row;
+
+        //cellIndex    = new GameObject[gridSize - 1]; //4x4 - 1 = 15 элементов
+        //triggerIndex = new GameObject[gridSize - 1];
+
+        for (int y = 0; y < gridSize / row ; y++)
+        {
+            for (int x = 0; x < gridSize / column ; x++)
             {
-                if (x == colum - 1 && y == row -1)
+                if (x == column - 1 && y == row - 1)
                 {
-                    return;
+                    return; //Удаление 16 ячейки
                 }
-                int count = y * row + x;
-                cellIndex[count] = Instantiate(cell, new Vector3(x,border.transform.localScale.y * (row - 1) -y, 0), Quaternion.identity) as GameObject;
-                cellTrigerIndex[count] = Instantiate(cellTrigger, new Vector3(x, border.transform.localScale.y * (row - 1) - y, 0), Quaternion.identity) as GameObject;
+
+                Instantiate(cell, new Vector3(x,(row - 1) - y, 0), Quaternion.identity);
+                //int count = y * row + x; //Поиск индекса и дальнейшее присваивание
+                //cellIndex   [count] = Instantiate(cell, new Vector3(x,border.transform.localScale.y * (row - 1) -y, 0), Quaternion.identity) as GameObject;
+                //triggerIndex[count] = Instantiate(cellTrigger, new Vector3(x, border.transform.localScale.y * (row - 1) - y, 0), Quaternion.identity) as GameObject;
             }
         }
         
 
     }
 
-    void FillTriggers(GameObject[] _game)
+    /*void FillTriggers(GameObject[] _game)
     {
         for (int i = 0; i < _game.Length; i++)
         {
@@ -64,52 +78,46 @@ public class Grid : MonoBehaviour
                 _game[i].GetComponent<BarleyBreak>().NumberCell = i;
             }
         }
-    }
+    }*/
 
     void CreateBorders()
     {
-        if (border != null)
-        {
-            float xBord = border.transform.localScale.x;
-            float yBord = border.transform.localScale.y;
 
-            for (int i = 0; i <= row; i++)
+        int verticalSide = row;
+        int horizontalSide = column;
+
+        //Построение вертикальных стенок
+            for (int i = -1; i <= verticalSide; i++)
             {
-                Instantiate(border, new Vector3(transform.position.x - xBord, i, 0), Quaternion.identity);
-            }
-            for (int i = 0; i <= colum; i++)
-            {
-                Instantiate(border, new Vector3(i, row * yBord, 0), Quaternion.identity);
-            }
-            for (int i = 0; i <= row + 1; i++)
-            {
-                Instantiate(border, new Vector3((transform.position.x - xBord) + i, transform.position.y - yBord, 0), Quaternion.identity);
-            }
-            for (int i = 0; i <= colum; i++)
-            {
-                Instantiate(border, new Vector3(transform.position.x + xBord * colum, i, 0), Quaternion.identity);
+                Instantiate(border, new Vector3(transform.position.x - 1, i, 0), Quaternion.identity); 
+                Instantiate(border, new Vector3(transform.position.x + column, i, 0), Quaternion.identity); //Вертикальные
             }
 
-        }
-
+        //Построение горизонтальных стенок
+            for (int i = 0; i < horizontalSide; i++)
+            {
+                Instantiate(border, new Vector3(i, row, 0), Quaternion.identity);
+                Instantiate(border, new Vector3(i, transform.position.y - 1, 0), Quaternion.identity);
+                                                                                                                              
+            }
     }
 
-    void Randomize(GameObject[] _game)
+    void Randomize(Index[] id)
     {
-        for (int i = 0; i < _game.Length - 1; i++)
+        for (int i = 0; i < id.Length; i++)
         {
             bool contrains;
             int next;
             do
             {
-                next = Random.Range(1, _game.Length);
+                next = Random.Range(1, id.Length);
                 contrains = false;
 
                 for (int index = 0; index < i; index++)
                 {
-                    if (_game[i] != null)
+                    if (id[i] != null)
                     {
-                        int n = _game[index].GetComponent<BarleyBreak>().NumberCell;
+                        int n = id[index].index;
                         if (n == next)
                         {
                             contrains = true;
@@ -119,9 +127,9 @@ public class Grid : MonoBehaviour
 
                 }
             } while (contrains);
-            if (_game[i] != null)
+            if (id[i] != null)
             {
-                _game[i].GetComponent<BarleyBreak>().NumberCell = next;
+                id[i].index = next;
             }
 
         }

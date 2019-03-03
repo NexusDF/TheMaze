@@ -5,6 +5,9 @@ public class MazeCreator : MonoBehaviour
 {
     public Texture2D map;
 
+    public float offsetX = 1;
+    public float offsetY = 1;
+
     public ColorToPrefab[] colorMappings;
 
     public Vector3 rotation = Vector3.zero;
@@ -20,7 +23,7 @@ public class MazeCreator : MonoBehaviour
         {
             for (int y = 0; y < map.height; y++)
             {
-                GeneratorTile(x, y);
+                GeneratorTile(x , y );
             }
         }
     }
@@ -38,7 +41,7 @@ public class MazeCreator : MonoBehaviour
         {
             if (colorMapping.color.Equals(pixelColor))
             {
-                Vector3 position = new Vector3(x, 0, y);
+                Vector3 position = new Vector3(x * (int)offsetX, 0, y * (int)offsetY);
                 Instantiate(colorMapping.prefab, position, Quaternion.Euler(rotation), transform);
             }
         }

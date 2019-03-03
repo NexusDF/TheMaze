@@ -60,9 +60,9 @@ public class BarleyBreak : MonoBehaviour
     public void ChecksWin()
     {
         int count = 0;
-        for (int i = 0; i < grid.cellTrigerIndex.Length; i++)
+        for (int i = 0; i < grid.triggerIndex.Length; i++)
         {
-            if (grid.cellTrigerIndex[i].GetComponent<BarleyBreak>().NumberCell != cells[i])
+            if (grid.triggerIndex[i].GetComponent<BarleyBreak>().NumberCell != cells[i])
             {
                 count = 0;
                 return;

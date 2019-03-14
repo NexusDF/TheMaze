@@ -25,44 +25,24 @@ public class RayToScreen : MonoBehaviour
 
         RaycastHit hit;
         Ray rayLeft = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2 - 250, camera.pixelHeight / 2 - 100));
-
-        if (Physics.Raycast(rayLeft, out hit))
-        {
-            if (hit.collider.tag == "Wall")
-                hit.collider.GetComponent<Renderer>().material = startedMaterial;
-
-        }
-
         Ray rayRight = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2 + 250, camera.pixelHeight / 2 - 100));
-
-        if (Physics.Raycast(rayRight, out hit))
-        {
-            if (hit.collider.tag == "Wall")
-                hit.collider.GetComponent<Renderer>().material = startedMaterial;
-
-        }
-
         Ray rayDown = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2, 1));
 
-        if (Physics.Raycast(rayDown, out hit))
+        if (Physics.Raycast(rayLeft, out hit) || Physics.Raycast(rayRight, out hit)|| Physics.Raycast(rayDown, out hit))
         {
             if (hit.collider.tag == "Wall")
                 hit.collider.GetComponent<Renderer>().material = startedMaterial;
 
         }
-
+        
         Ray ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2, camera.pixelHeight / 2 - 100));
-
-
+        
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.tag == "Wall")
             {
                 hit.collider.GetComponent<Renderer>().material = material;
             }
-
-
-
         }
     }
 }

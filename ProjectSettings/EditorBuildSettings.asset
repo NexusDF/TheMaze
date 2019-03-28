@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 39f378b46a6c8bd4badef947f950e964
+  - enabled: 1
+    path: Assets/Scenes/Show_MazeCreator.unity
+    guid: abbc72f8c382215419ada6f06a5635a5
+  - enabled: 1
+    path: Assets/Scenes/Bricks.unity
+    guid: 334222933ce9d4648821892d23cce3ad
   m_configObjects: {}

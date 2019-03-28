@@ -326,6 +326,9 @@ MonoBehaviour:
   - color: {r: 1, g: 0, b: 0, a: 1}
     prefab: {fileID: 2020653646852002164, guid: f6fb1f1f89e765646abfb170c1376b88,
       type: 3}
+  - color: {r: 1, g: 1, b: 1, a: 1}
+    prefab: {fileID: 3062141343616926374, guid: 24f1e0b92b0958b40acdfe800bdc6e64,
+      type: 3}
   rotation: {x: 0, y: 0, z: 0}
 --- !u!4 &2073953700
 Transform:

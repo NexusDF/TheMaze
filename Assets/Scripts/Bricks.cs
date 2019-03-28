@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bricks : MonoBehaviour
 {
@@ -12,17 +13,19 @@ public class Bricks : MonoBehaviour
     public GameObject WinPanel;
     private int[] WinArray = { 0, 2, 4, 7, 9, 11, 12, 14, 16, 19, 21, 23, 24, 26, 28, 31, 33, 35};
 
+
+
     private void Start()
     {
         WinPanel.SetActive(false);
         for (int i = 0; i < brick.Length; i++)
         {
-            int r = Random.Range(0, 2);
-            if (r == 1)
-            {
-                brick[i].flag = true;
-            }
-            else brick[i].flag = false;
+            //int r = Random.Range(0, 2);
+            //if (r == 1)
+            //{
+            //    brick[i].flag = true;
+            //}
+            //else brick[i].flag = false;
             brick[i].x = i / count;
             brick[i].y = i % count;
             if (brick[i].flag == true)
@@ -84,6 +87,10 @@ public class Bricks : MonoBehaviour
                 brick[i].win = true;
             }
             WinPanel.SetActive(true);
+
+            SceneManager.LoadScene("Show_MazeCreator");
         }
     }
+
+
 }

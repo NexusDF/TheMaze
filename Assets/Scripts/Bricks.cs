@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Bricks : MonoBehaviour
@@ -88,9 +90,16 @@ public class Bricks : MonoBehaviour
             }
             WinPanel.SetActive(true);
 
-            SceneManager.LoadScene("Show_MazeCreator");
+            StartCoroutine("WinInGame");
         }
     }
 
+    
+    public IEnumerator WinInGame()
+    {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("Show_MazeCreator");
+        StopCoroutine("WinInGame");
+    }
 
 }

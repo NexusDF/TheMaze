@@ -28,6 +28,12 @@ public class MazeCreator : MonoBehaviour
         }
     }
 
+    public void MapChanger(Texture2D newMap)
+    {
+        map = newMap;
+        GeneratorMaze();
+    }
+
     void GeneratorTile(int x, int y)
     {
         Color pixelColor = map.GetPixel(x, y);

@@ -8,6 +8,7 @@ public class RayToScreen : MonoBehaviour
     Camera camera;
 
     public Material material;
+    private RayFlag rayFlag;
 
     public Material startedMaterial;
     private void Start()
@@ -15,7 +16,7 @@ public class RayToScreen : MonoBehaviour
         camera = GetComponent<Camera>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         RayToPoint();
     }
@@ -24,45 +25,51 @@ public class RayToScreen : MonoBehaviour
     {
 
         RaycastHit hit;
-        Ray rayLeft = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2 - 250, camera.pixelHeight / 2 - 100));
-
-        if (Physics.Raycast(rayLeft, out hit))
-        {
-            if (hit.collider.tag == "Wall")
-                hit.collider.GetComponent<Renderer>().material = startedMaterial;
-
-        }
-
-        Ray rayRight = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2 + 250, camera.pixelHeight / 2 - 100));
-
-        if (Physics.Raycast(rayRight, out hit))
-        {
-            if (hit.collider.tag == "Wall")
-                hit.collider.GetComponent<Renderer>().material = startedMaterial;
-
-        }
-
-        Ray rayDown = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2, 1));
+        Ray rayLeft = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2 - 200, camera.pixelHeight / 2 - 70));
+        Ray rayRight = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2 + 200, camera.pixelHeight / 2 - 70));
+        Ray rayDown = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2, camera.pixelHeight / 2 - 220));
 
         if (Physics.Raycast(rayDown, out hit))
         {
             if (hit.collider.tag == "Wall")
-                hit.collider.GetComponent<Renderer>().material = startedMaterial;
-
+            {
+                rayFlag = hit.collider.GetComponent<RayFlag>();
+                rayFlag.OpacityOff();
+            }
         }
 
-        Ray ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2, camera.pixelHeight / 2 - 100));
+        if (Physics.Raycast(rayLeft, out hit))
+        {
+            if (hit.collider.tag == "Wall")
+            {
+                rayFlag = hit.collider.GetComponent<RayFlag>();
+                rayFlag.OpacityOff();
+            }
 
+
+        }
+        if (Physics.Raycast(rayRight, out hit))
+        {
+            if (hit.collider.tag == "Wall")
+            {
+                rayFlag = hit.collider.GetComponent<RayFlag>();
+                rayFlag.OpacityOff();
+            }
+
+
+        }
+        
+
+
+        Ray ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2, camera.pixelHeight / 2 - 100));
 
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.tag == "Wall")
             {
-                hit.collider.GetComponent<Renderer>().material = material;
+                rayFlag = hit.collider.GetComponent<RayFlag>();
+                rayFlag.OpacityOn();
             }
-
-
-
         }
     }
 }

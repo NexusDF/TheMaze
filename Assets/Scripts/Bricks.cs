@@ -13,9 +13,10 @@ public class Bricks : MonoBehaviour
     public Material _Red;
     private bool win = false;
     public GameObject WinPanel;
-    private int[] WinArray = { 0, 2, 4, 7, 9, 11, 12, 14, 16, 19, 21, 23, 24, 26, 28, 31, 33, 35};
-
-
+    private int[] WinArray = { 0, 1, 2, 3, 4, 5, 6, 12, 18, 24, 30 };
+    private GameObject mainCamera;
+    private GameObject brickCamera;
+    public GameObject startGame = GameObject.FindGameObjectWithTag("BlueAndRed");
 
     private void Start()
     {
@@ -97,8 +98,11 @@ public class Bricks : MonoBehaviour
     
     public IEnumerator WinInGame()
     {
+        mainCamera = startGame.gameObject.GetComponent<StartGameBlueAndRed>().mainCamera;
+        brickCamera = startGame.gameObject.GetComponent<StartGameBlueAndRed>().brickCamera;
         yield return new WaitForSeconds(3.0f);
-        SceneManager.LoadScene("Show_MazeCreator");
+        mainCamera.SetActive(true);
+        brickCamera.SetActive(false);
         StopCoroutine("WinInGame");
     }
 

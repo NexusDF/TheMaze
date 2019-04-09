@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 2836750198370123241}
   m_Layer: 0
   m_Name: Main_camera
-  m_TagString: MainCamera
+  m_TagString: PersonCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: abc8c02e20dc2eb4080f28cdeef96cbd, type: 2}
-  target: {fileID: 0}
   startedMaterial: {fileID: 2100000, guid: 1237d1cd6c7825944acab4d0c1cc9a7f, type: 2}
 --- !u!1 &3492994835645491804
 GameObject:

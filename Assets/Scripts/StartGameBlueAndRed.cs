@@ -10,10 +10,19 @@ public class StartGameBlueAndRed : MonoBehaviour
     public KeyCode pressKey = KeyCode.F;
     [SerializeField] private GameObject pressKeyText;
     private bool isAstive = true;
+    public GameObject mainCamera;
+    public GameObject brickCamera;
+
+    public void Awake()
+    {
+        mainCamera = GameObject.FindGameObjectWithTag("PersonCam");
+            brickCamera = GameObject.FindGameObjectWithTag("BrickCam");
+    }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Bricks");
+        mainCamera.SetActive(false);
+        brickCamera.SetActive(true);
         Time.timeScale = 1;
     }
 

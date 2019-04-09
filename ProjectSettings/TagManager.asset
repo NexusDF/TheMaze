@@ -7,6 +7,9 @@ TagManager:
   - trigger
   - Number
   - Wall
+  - BrickCam
+  - PersonCam
+  - BlueAndRed
   layers:
   - Default
   - TransparentFX

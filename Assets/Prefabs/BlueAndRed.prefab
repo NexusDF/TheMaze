@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 218572278637417624}
   m_Layer: 0
   m_Name: BlueAndRed
-  m_TagString: Untagged
+  m_TagString: BlueAndRed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

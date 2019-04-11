@@ -7,16 +7,27 @@ public class Bricks : MonoBehaviour
 {
     public Bricks[] brick;
     public int count;
-    private bool flag;
-    private int x, y;
+    
+
     public Material _Blue;
     public Material _Red;
-    private bool win = false;
+
     public GameObject WinPanel;
+
+    private bool flag;
+    private int x, y;
+    private StartGameBlueAndRed sgbar;
+
+    private bool win = false;
+    private GameObject startGame;
     private int[] WinArray = { 0, 1, 2, 3, 4, 5, 6, 12, 18, 24, 30 };
     private GameObject mainCamera;
     private GameObject brickCamera;
-    public GameObject startGame = GameObject.FindGameObjectWithTag("BlueAndRed");
+
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {
@@ -98,11 +109,10 @@ public class Bricks : MonoBehaviour
     
     public IEnumerator WinInGame()
     {
-        mainCamera = startGame.gameObject.GetComponent<StartGameBlueAndRed>().mainCamera;
-        brickCamera = startGame.gameObject.GetComponent<StartGameBlueAndRed>().brickCamera;
+        
+
         yield return new WaitForSeconds(3.0f);
-        mainCamera.SetActive(true);
-        brickCamera.SetActive(false);
+        sgbar.SwapCam(true);
         StopCoroutine("WinInGame");
     }
 

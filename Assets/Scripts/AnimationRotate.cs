@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Direction : MonoBehaviour
+public class AnimationRotate : MonoBehaviour
 {
     private void Update()
     {
@@ -39,4 +39,5 @@ public class Direction : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, 135, 0);
         }
     }
+    
 }

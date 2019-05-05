@@ -925,8 +925,6 @@ namespace dotBunny.Unity
         [UnityEditor.Callbacks.DidReloadScripts()]
         static void OnScriptReload()
         {
-            EditorApplication.playmodeStateChanged -= OnPlaymodeStateChanged;
-            EditorApplication.playmodeStateChanged += OnPlaymodeStateChanged;
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ TagManager:
   - BrickCam
   - PersonCam
   - BlueAndRed
+  - Enemy
   layers:
   - Default
   - TransparentFX

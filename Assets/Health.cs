@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-
+    public GameObject Parent;
     public int HealthPoint = 100;
     public Text TableHealth;
     public GameObject DeadTable;
@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                Destroy(Parent);
             }
          
         }
